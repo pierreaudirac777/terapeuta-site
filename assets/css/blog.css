@@ -1,0 +1,163 @@
+.header-blog {
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  padding: 56px 0;
+  text-align: center;
+}
+
+.header-blog h1 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.header-blog p {
+  margin: 0;
+  opacity: .95;
+}
+ 
+/* Contenedor general del blog */
+/* Rejilla del blog usando flexbox */
+.blog-grid {
+  display: flex;
+  flex-wrap: wrap;        /* permite que las tarjetas salten de línea */
+  gap: 2rem;
+  justify-content: center; /* centra todas las tarjetas */
+}
+
+/* Cada tarjeta de post */
+.post.card {
+  flex: 0 0 320px;   /* NO crece, NO se encoge, ancho fijo 320px */
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Imagen dentro de la tarjeta */
+.post.card .thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.post.card .thumb img {
+  width: 100%;      /* la imagen se adapta al ancho de la tarjeta */
+  height: auto;     /* mantiene proporción */
+  display: block;   /* quita espacios raros */
+}
+body {
+  overflow-x: hidden;
+}
+/* --- Artículo individual del blog --- */
+
+.container.article h2,
+.container.article p,
+.container.article .meta {
+  margin-left: 0;
+  padding-left: 0;
+  width: 100%;
+}
+.container.article .thumb {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.container.article .thumb img {
+  display: inline-block;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+}
+.article-body {
+  display: block;
+  width: 100%;
+  max-width: none;
+  text-align: justify;
+}
+/* ============================================
+   TIPOGRAFÍA CONSISTENTE PARA ARTÍCULOS DEL BLOG
+   ============================================ */
+
+.blog-article,
+.blog-article * {
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-weight: 400 !important;    /* 🔹 Todo normal, sin negritas */
+  line-height: 1.6;               /* legibilidad */
+}
+
+/* Mantener jerarquía visual sin usar negritas */
+.blog-article h1,
+.blog-article h2,
+.blog-article h3 {
+  font-size: inherit;
+  font-weight: 400 !important;    /* nada de negrita */
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+/* Opcional: si quieres títulos un poco más grandes sin negritas */
+.blog-article h1 { font-size: 1.9rem; }
+.blog-article h2 { font-size: 1.5rem; }
+.blog-article h3 { font-size: 1.25rem; }
+/* ============================================
+   TIPOGRAFÍA CONSISTENTE PARA ARTÍCULOS DEL BLOG
+   ============================================ */
+
+.blog-article,
+.blog-article * {
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-weight: 400 !important;   /* sin negritas */
+  line-height: 1.6;
+}
+
+/* Estilo de títulos sin negrita pero con jerarquía visual */
+.blog-article h1,
+.blog-article h2,
+.blog-article h3 {
+  font-weight: 400 !important;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+/* Tamaños opcionales de títulos */
+.blog-article h1 { font-size: 1.9rem; }
+.blog-article h2 { font-size: 1.5rem; }
+.blog-article h3 { font-size: 1.25rem; }
+/* Tipografía uniforme dentro del artículo del blog */
+.blog-article,
+.blog-article * {
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-weight: 400 !important; /* sin negrita */
+  line-height: 1.6;
+}
+
+/* 🔹 MISMO TAMAÑO para títulos y párrafos */
+.blog-article h1,
+.blog-article h2,
+.blog-article h3,
+.blog-article h4,
+.blog-article h5,
+.blog-article h6,
+.blog-article p {
+  font-size: 1rem;          /* aquí mandas tú el tamaño base */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* (Opcional) meta un poco más pequeña */
+.blog-article .meta {
+  font-size: 0.9rem;
+}
+/* Justificar todo el texto del artículo del blog */
+.blog-article p,
+.blog-article .meta,
+.blog-article h1,
+.blog-article h2,
+.blog-article h3,
+.blog-article h4,
+.blog-article h5,
+.blog-article h6 {
+  text-align: justify !important;
+  text-justify: inter-word;
+}

@@ -1,0 +1,38 @@
+{
+  "liveServer.settings.port": 8080,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.file": "index.html",
+  "liveServer.settings.wait": 150,
+
+  "editor.formatOnSave": true,
+
+  // Usa formateadores integrados por lenguaje:
+  "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
+  "[css]": { "editor.defaultFormatter": "vscode.css-language-features" },
+  "[json]": { "editor.defaultFormatter": "vscode.json-language-features" },
+  "[markdown]": { "editor.defaultFormatter": "vscode.markdown-language-features" },
+
+  "files.eol": "\n",
+  "files.autoSave": "off",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+
+  "html.format.endWithNewline": true,
+  "css.validate": true,
+  "scss.validate": true,
+  "less.validate": true,
+  "javascript.validate.enable": true,
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "razor": "html"
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  }
+}

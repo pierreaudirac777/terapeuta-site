@@ -1,0 +1,33 @@
+.pv-wrap {
+  max-width: 900px;
+  padding-top: 24px;
+  padding-bottom: 32px;
+}
+
+.pv-wrap h1 {
+  margin: 24px 0 10px;
+  color: var(--primary-dark);
+  font-size: clamp(28px, 3.2vw, 36px);
+}
+
+.pv-wrap h3 {
+  margin: 24px 0 10px;
+  color: var(--primary-dark);
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+
+.pv-wrap ul {
+  padding-left: 20px;
+}
+
+.pv-wrap li {
+  margin: 6px 0;
+}
+
+.pv-wrap a {
+  color: var(--primary);
+}
+
+.pv-wrap a:hover {
+  text-decoration: underline;
+}

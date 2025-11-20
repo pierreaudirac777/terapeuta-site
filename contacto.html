@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ACOMPAÑAMIENTO TERAPÉUTICO – Contacto</title>
+  <meta name="description" content="Agenda tu primera sesión gratuita o resuelve tus dudas." />
+  <link rel="icon" href="./assets/img/avatar.jpg" />
+  <link rel="stylesheet" href="./assets/css/base.css?v=1" />
+  <link rel="stylesheet" href="./assets/css/contacto.css?v=1" />
+  <script src="./assets/js/nav.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/34647398535?text=Hola%20Pierre,%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20las%20sesiones"
+    class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="./index.html"><span>·</span></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="./index.html">Inicio</a>
+        <a href="./contacto.html" aria-current="page">Contacto</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./avisoprivacidad.html">Aviso de Privacidad</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cabecera visual de contacto (si quieres usar la imagen hero en esta página) -->
+    <section class="header-contacto">
+      <div class="container center">
+        <h1>¿Quieres dar el primer paso hacia tu bienestar?</h1>
+        <p>Rellena el formulario o contáctame por WhatsApp. Primera consulta sin coste.</p>
+        <a class="btn btn-primary"
+          href="https://wa.me/34647398535?text=Hola%20Pierre%2C%20me%20gustar%C3%ADa%20agendar%20una%20primera%20consulta"
+          target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+<!-- Formulario -->
+<section class="section">
+  <div class="container">
+    <article class="card">
+      <h2>Formulario</h2>
+      <form id="contact-form" action="https://api.staticforms.xyz/submit" method="POST" class="form-grid">
+        
+        <!-- Nombre -->
+        <label>
+          <span class="sr-only">Nombre</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            required
+            maxlength="50"
+          >
+          <span id="name-error" class="error-msg" aria-live="polite"></span>
+        </label>
+
+        <!-- Email -->
+        <label>
+          <span class="sr-only">Email</span>
+          <input type="email" name="email" placeholder="Email" required>
+        </label>
+
+        <!-- Teléfono -->
+        <label>
+          <span class="sr-only">Teléfono</span>
+          <input 
+            type="tel" 
+            name="phone" 
+            placeholder="Teléfono"
+            inputmode="tel"
+            maxlength="20"
+          >
+          <span id="phone-error" class="error-msg" aria-live="polite"></span>
+        </label>
+
+        <!-- Asunto -->
+        <label>
+          <span class="sr-only">Asunto</span>
+          <input type="text" name="subject" placeholder="Asunto">
+        </label>
+
+        <!-- Mensaje -->
+        <label class="full">
+          <span class="sr-only">Mensaje</span>
+          <textarea name="message" placeholder="Cuéntame brevemente tu solicitud" rows="5" required></textarea>
+        </label>
+
+        <!-- Casilla de aceptación -->
+        <label class="consent full">
+          <input type="checkbox" id="acepto-privacidad" name="acepto_privacidad" value="1" required>
+          <span>
+            Acepto el
+            <a href="./avisoprivacidad.html" target="_blank" rel="noopener">Aviso de Privacidad</a>.
+          </span>
+        </label>
+
+        <!-- StaticForms -->
+        <input type="hidden" name="accessKey" value="sf_47jlacbh2e3lk5231dm31lag">
+        <input type="hidden" name="subject" value="Información de Paciente">
+        <input type="hidden" name="replyTo" value="@"> 
+        <input type="hidden" name="redirectTo" value="https://TUDOMINIO.com/gracias.html">
+
+        <!-- Botón -->
+        <button class="btn btn-primary full" type="submit">Enviar</button>
+      </form>
+    </article>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="2025"></span> Pierre Audirac. Todos los derechos reservados.</small>
+      <a class="link" href="./avisoprivacidad.html">Aviso de Privacidad</a>
+    </div>
+  </footer>
+</body>
+
+</html>
+
+<form action="https://api.staticforms.xyz/submit" method="POST" class="form-grid">
