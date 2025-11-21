@@ -183,7 +183,8 @@ body {
   padding: 1.25rem;
 }
 
-.sesiones .servicio-header{
+/* Cabecera y subtítulo de cada card */
+.sesiones .servicio-header {
   text-align: center;
   margin: 0 0 .25rem 0;
   line-height: 1.2;
@@ -193,122 +194,127 @@ body {
   opacity: .85;
   margin: 0 0 .75rem 0;
   font-size: .95rem;
+  text-align: center; /* centramos subtítulos */
 }
 
+
+
+/* Listas dentro de las cards */
 .sesiones .servicio-lista {
   margin: .5rem 0 1rem 1.1rem;
   padding: 0;
   list-style: disc;
 }
 
+/* CTAs dentro de las cards */
 .sesiones .servicio-cta {
-  display: flex;
+  display: grid;           /* apila los botones */
   gap: .5rem;
-  margin-top: auto; /* empuja las CTAs al final del card */
-  flex-wrap: wrap;
+  justify-items: center;   /* centra ambos horizontalmente */
+  margin-top: auto;        /* empuja las CTAs al final del card */
 }
 
-/* "Leer más" accesible con transición suave */
-.sesiones .more {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height .3s ease;
+.sesiones .servicio-cta .btn-primary {
+  order: 1;                /* Reservar primero */
 }
 
-.sesiones .more[aria-hidden="false"] {
-  /* Altura suficiente; el JS ajusta max-height en runtime para animar mejor */
-  max-height: 1000px;
+.sesiones .servicio-cta .btn-ghost {
+  order: 2;                /* WhatsApp debajo */
 }
 
-.sesiones .more-toggle {
-  margin-top: .75rem;
+.sesiones .servicio-detalle {
+  margin-top: .25rem;
+  opacity: .95;
 }
 
-/* Afinado responsivo */
-@media (min-width: 992px) {
-  .sesiones .cards { gap: 1.5rem; }
-  .sesiones .card.servicio { padding: 1.5rem; }
+/* Justificar texto, pero NO los subtítulos */
+.sesiones .card p:not(.servicio-sub),
+.sesiones .card li,
+.sesiones .card .more {
+  text-align: justify;
 }
 
 
-/* Interacciones uniformes */
-.sesiones .card .more-toggle{
+/* Botón "Leer más" dentro de las cards de sesiones */
+.sesiones .card .more-toggle {
   box-shadow: 0 6px 18px rgba(0,0,0,.22);
   transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
 }
+
 .sesiones .card .more-toggle:hover,
-.sesiones .card .more-toggle:focus{
+.sesiones .card .more-toggle:focus {
   transform: translateY(-1px);
   filter: brightness(1.06);
   box-shadow: 0 10px 24px rgba(0,0,0,.28);
   outline: none;
 }
-.sesiones .card .more-toggle:focus-visible{
+
+.sesiones .card .more-toggle:focus-visible {
   outline: 2px solid rgba(255,255,255,.35);
   outline-offset: 2px;
 }
 
-/* Opcional: realce al pasar el ratón por toda la tarjeta */
-.sesiones .card:hover{
-  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+/* Título de la sección Sesiones */
+.sesiones h2 {
+  text-align: center;
+  max-width: 30ch;
+  margin-inline: auto;
+  margin-block: 0 1rem;
 }
 
+/* Colores personalizados por card de Sesiones */
+.sesiones .cards .servicio:nth-child(1) .servicio-header h3 { color: #0e0d0d; } /* Individual */
+.sesiones .cards .servicio:nth-child(1) .servicio-sub     { color: #0e0d0d; }
 
-/* Hover/foco consistentes en todas */
-.sesiones .card .more-toggle{
-  box-shadow: 0 6px 18px rgba(0,0,0,.22);
-  transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
-}
-.sesiones .card .more-toggle:hover,
-.sesiones .card .more-toggle:focus{
-  transform: translateY(-1px);
-  filter: brightness(1.06);
-  box-shadow: 0 10px 24px rgba(0,0,0,.28);
-  outline: none;
-}
-.sesiones .card .more-toggle:focus-visible{
-  outline: 2px solid rgba(255,255,255,.35);
-  outline-offset: 2px;
-}
-.sesiones .servicio-detalle { margin-top: .25rem; opacity: .95; }
+.sesiones .cards .servicio:nth-child(2) .servicio-header h3 { color: #0e0d0d; } /* Pareja */
+.sesiones .cards .servicio:nth-child(2) .servicio-sub     { color: #0e0d0d; }
 
+.sesiones .cards .servicio:nth-child(3) .servicio-header h3 { color: #0e0d0d; } /* LGTBIQ+ */
+.sesiones .cards .servicio:nth-child(3) .servicio-sub     { color: #0e0d0d; }
 
-/* Grids */
+.sesiones .cards .servicio:nth-child(4) .servicio-header h3 { color: #0e0d0d; } /* Duelo migratorio */
+.sesiones .cards .servicio:nth-child(4) .servicio-sub     { color: #0e0d0d; }
+
+.sesiones .cards .servicio:nth-child(1) :is(p, li),
+.sesiones .cards .servicio:nth-child(2) :is(p, li),
+.sesiones .cards .servicio:nth-child(3) :is(p, li),
+.sesiones .cards .servicio:nth-child(4) :is(p, li) {
+  color: #021414;
+}
+
+/* ===== Grids genéricos ===== */
 .grid-2 {
   display: grid;
   gap: 24px;
   grid-template-columns: 1fr 1fr;
 }
 
-@media (max-width:900px) {
+@media (max-width: 900px) {
   .grid-2 {
     grid-template-columns: 1fr;
   }
 }
 
-/* Avatar redondo + tamaño adaptable (más amplio) */
-.avatar{
-  /* Tamaño fluido: mínimo 240px, crece hasta 380px según viewport */
-  --size: clamp(240px, 32vw, 380px);
+/* ===== Avatar redondo ===== */
+.avatar {
+  --size: clamp(240px, 32vw, 380px); /* Tamaño fluido */
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
   object-fit: cover;
   box-shadow: var(--shadow);
-
-  /* Detalles estéticos opcionales */
-  border: 4px solid #fff;                 /* aro blanco fino */
-  outline: 3px solid rgba(11,58,91,.12);  /* anillo suave en color marca */
+  border: 4px solid #fff;
+  outline: 3px solid rgba(11,58,91,.12);
 }
 
-/* Centrar fácilmente si la imagen está sola */
-.avatar-center{
+/* Centrar avatar cuando va solo */
+.avatar-center,
+#sobre-mi .avatar {
   display: block;
   margin-inline: auto;
 }
 
-
-/* ====== Cards (Sesiones / genéricas) ====== */
+/* ===== Cards genéricas ===== */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -347,7 +353,21 @@ body {
   color: #ebf2f3;
 }
 
-/* Leer más */
+/* ===== Componente "Leer más" ===== */
+.more {
+  display: none;
+  margin-top: 14px;
+  background: var(--s1);
+  border-radius: 12px;
+  padding: 12px;
+  color: #e0e8e9;
+}
+
+.more.is-open {
+  display: block;
+}
+
+/* Botón "Leer más" genérico */
 .link.more-toggle {
   margin-top: 12px;
   background-color: var(--s3);
@@ -365,20 +385,7 @@ body {
   transform: scale(1.05);
 }
 
-.more {
-  display: none;
-  margin-top: 14px;
-  background: var(--s1);
-  border-radius: 12px;
-  padding: 12px;
-  color: #e0e8e9;
-}
-
-.more.is-open {
-  display: block;
-}
-
-/* ====== Botones ====== */
+/* ===== Botones ===== */
 .btn {
   display: inline-block;
   font-weight: 700;
@@ -397,21 +404,20 @@ body {
   color: var(--text);
   border: 1px solid rgba(2, 6, 23, .08);
 }
-/* ====== Footer ====== */
-/* ====== Footer ====== */
+
+/* ===== Footer ===== */
 .site-footer {
   background: #0ea5a6;
   border-top: 1px solid #e2e8f0;
   margin-top: 40px;
-
-  padding: 2px 0;          /* antes 4px → ahora MUY fino */
+  padding: 2px 0;
   text-align: center;
-  font-size: 12px;         /* más pequeño */
-  line-height: 1.1;        /* casi sin aire entre líneas */
+  font-size: 12px;
+  line-height: 1.1;
 }
 
 .site-footer p {
-  margin: 0;               /* SIN margen extra */
+  margin: 0;
 }
 
 .site-footer .container {
@@ -424,11 +430,8 @@ body {
   text-decoration: underline;
   font-size: 12px;
   display: inline-block;
-  margin-top: 2px;         /* un pelín de separación con la línea de arriba */
+  margin-top: 2px;
 }
-
-
-
 
 .footer-inner {
   display: flex;
@@ -442,9 +445,7 @@ body {
   color: #f0f3f5;
 }
 
-/* estilo de enlaces tipo texto */
-
-/* ====== Botón flotante WhatsApp ====== */
+/* ===== Botón flotante WhatsApp ===== */
 .whatsapp-float {
   position: fixed;
   bottom: 22px;
@@ -469,134 +470,101 @@ body {
   width: 34px;
   height: 34px;
 }
+
 /* En el hero, haz que el botón de WhatsApp se vea igual que .btn-primary */
-.hero .cta-row a.btn-ghost{
+.hero .cta-row a.btn-ghost {
   background: var(--primary);
   color: var(--primary-ink);
   border-color: transparent;
 }
-.hero .cta-row a.btn-ghost:hover{
+
+.hero .cta-row a.btn-ghost:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
 }
+
 /* Título principal del hero más grande y legible */
-.hero-overlay h1{
-  font-size: clamp(36px, 6vw, 64px); /* antes ~32–40px; ahora hasta 64px en desktop */
+.hero-overlay h1 {
+  font-size: clamp(36px, 6vw, 64px);
   line-height: 1.1;
   letter-spacing: 0.4px;
   font-weight: 900;
   margin: 0 0 10px;
-  text-shadow: 0 2px 14px rgba(0,0,0,.35); /* mejora contraste sobre la foto */
+  text-shadow: 0 2px 14px rgba(0,0,0,.35);
 }
 
-/* Opcional: agranda también el subtítulo */
-.hero-overlay p{
+/* Subtítulo del hero */
+.hero-overlay p {
   font-size: clamp(16px, 2.2vw, 22px);
   max-width: 900px;
 }
+
 /* Sobre mí: tipografía y justificado */
-.about-text{
+.about-text {
   text-align: justify;
-  font-size: clamp(19px, 1.8vw, 20px); /* medio/grande */
+  font-size: clamp(19px, 1.8vw, 20px);
   line-height: 1.20;
 }
-.about-text p{ margin: 0 0 14px; }
-.about-text strong{ color: var(--ghost); } /* resalta en tu tema oscuro */
-/* Sobre mí: avatar más compacto y texto más ancho */
-#sobre-mi{
-  /* Columna izquierda (avatar) con ancho “elástico” y tope; derecha ocupa el resto */
-  grid-template-columns: clamp(200px, 28vw, 300px) fr;
+
+.about-text p {
+  margin: 0 0 14px;
+}
+
+.about-text strong {
+  color: var(--ghost);
+}
+
+/* Sobre mí: layout */
+#sobre-mi {
+  grid-template-columns: clamp(200px, 28vw, 300px) 1fr;
   align-items: center;
+  gap: 18px;
 }
 
-/* Si quieres que el texto ocupe aún más, reduce un poco el gap */
-#sobre-mi{ gap: 18px; }
-
-@media (max-width: 900px){
-  /* En móvil sigue a una sola columna */
-  #sobre-mi{ grid-template-columns: 1fr; }
-}
-.more { display: none; margin-top: 14px; background: var(--s1); border-radius: 12px; padding: 12px; color: #e0e8e9; }
-.more.is-open { display: block; }
-/* Centrar el título de la sección Sesiones */
-.sesiones h2{
-  text-align: center;
-  margin-inline: auto;
+@media (max-width: 900px) {
+  #sobre-mi {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* (Opcional) Separación y ancho máximo para que respire */
-.sesiones h2{
-  max-width: 30ch;
-  margin-block: 0 1rem; /* ajusta si quieres más/menos espacio */
-}
-/* Título y subtítulo de cada card de Sesiones */
-.sesiones .cards .servicio:nth-child(1) .servicio-header h3 { color: #0e0d0d; } /* Individual */
-.sesiones .cards .servicio:nth-child(1) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(2) .servicio-header h3 { color: #0e0d0d; } /* Pareja */
-.sesiones .cards .servicio:nth-child(2) .servicio-sub     { color: #0e0d0d }
-
-.sesiones .cards .servicio:nth-child(3) .servicio-header h3 { color: #0e0d0d; } /* LGTBIQ+ */
-.sesiones .cards .servicio:nth-child(3) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(4) .servicio-header h3 { color: #0e0d0d; } /* Duelo migratorio */
-.sesiones .cards .servicio:nth-child(4) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(1) :is(p, li) { color: #021414; }
-.sesiones .cards .servicio:nth-child(2) :is(p, li) { color: #021414; }
-.sesiones .cards .servicio:nth-child(3) :is(p, li) { color: #021414; }
-.sesiones .cards .servicio:nth-child(4) :is(p, li) { color: #021414; }
-/* Sesiones: centrar "Reservar" y colocar WhatsApp debajo */
-.sesiones .servicio-cta{
-  display: grid;           /* apila los botones */
-  gap: .5rem;
-  justify-items: center;   /* centra ambos horizontalmente */
-}
-
-.sesiones .servicio-cta .btn-primary{
-  order: 1;                /* Reservar primero */
-}
-
-.sesiones .servicio-cta .btn-ghost{
-  order: 2;                /* WhatsApp debajo */
-}
-/* Centra la imagen por sí misma */
-#sobre-mi .avatar{
-  display: block;
-  margin-inline: auto;    /* centra horizontalmente */
-}
-.error-msg {
-  display: block;
-  font-size: 0.85rem;
-  color: #c0392b;
-  margin-top: 0.25rem;
-}
 /* Banner responsivo */
 .header-banner {
   width: 100%;
   background-size: cover;
   background-position: center;
-  height: 300px; /* altura para escritorio */
+  height: 300px;
 }
+
 @media (max-width: 768px) {
   .header-banner {
-    height: 180px; /* altura más apropiada para móvil */
+    height: 180px;
   }
 }
+
+/* Layout general */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 /* Centrar menú de navegación superior */
 .site-header nav {
   display: flex;
   justify-content: center;
-  gap: 1.75rem;   /* separación entre Inicio / Contacto / Blog / Aviso */
+  gap: 1.75rem;
 }
 
-/* Opcional: por si el contenedor interior usaba space-between */
+/* Contenedor del header */
 .site-header .header-inner {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Mensajes de error de formulario */
+.error-msg {
+  display: block;
+  font-size: 0.85rem;
+  color: #c0392b;
+  margin-top: 0.25rem;
 }
