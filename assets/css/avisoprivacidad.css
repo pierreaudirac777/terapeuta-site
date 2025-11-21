@@ -31,3 +31,6 @@
 .pv-wrap a:hover {
   text-decoration: underline;
 }
+.texto-justificado {
+  text-align: justify;
+}
