@@ -8,7 +8,7 @@
   --text: #f1f4f7;
   --bg: #060808;
 
-  /* Marca */
+  /* Marca y mi nombre */
   --primary: #0ea5a6;
   /* turquesa */
   --primary-dark: #44aa69;
@@ -567,4 +567,19 @@ html, body {
   font-size: 0.85rem;
   color: #c0392b;
   margin-top: 0.25rem;
+}
+.social-icon {
+  width: 32px;
+  height: 32px;
+  transition: transform .3s ease, opacity .3s ease;
+  display: inline-block;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.header-social {
+  text-align: center;
+  margin-top: 10px;
 }
