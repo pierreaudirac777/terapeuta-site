@@ -593,3 +593,14 @@ html, body {
 textarea {
   resize: none;
 }
+.card-404 {
+  max-width: 420px;
+  margin: 0 auto;     /* centra la tarjeta dentro del container */
+}
+
+.card-404 .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
