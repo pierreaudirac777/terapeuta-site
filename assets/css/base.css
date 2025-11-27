@@ -408,42 +408,42 @@ body {
 /* ===== Footer ===== */
 .site-footer {
   background: #0ea5a6;
-  border-top: 1px solid #e2e8f0;
-  margin-top: 40px;
-  padding: 2px 0;
+  color: #fff;
+  padding: 30px 20px;
   text-align: center;
-  font-size: 12px;
-  line-height: 1.1;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
+/* párrafos del footer */
 .site-footer p {
   margin: 0;
 }
 
+/* línea © 2025 + enlace */
 .site-footer .container {
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 0 auto 16px;
 }
 
 .site-footer a {
   color: #ffffff;
   text-decoration: underline;
-  font-size: 12px;
+  font-size: inherit;   /* misma letra que el texto */
   display: inline-block;
-  margin-top: 2px;
+  margin-left: 16px;    /* espacio entre tu nombre y el enlace */
 }
 
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
+/* texto largo legal */
+.site-footer {
+  background: #0ea5a6;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.link {
-  color: #f0f3f5;
-}
 
 /* ===== Botón flotante WhatsApp ===== */
 .whatsapp-float {
@@ -582,4 +582,14 @@ html, body {
 .header-social {
   text-align: center;
   margin-top: 10px;
+}
+.form-legal-note {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #e8e8e8;     /* un gris clarito, menos dominante */
+  margin: 6px 0 12px; /* menos espacio arriba, poco abajo */
+  text-align: left;   /* opcional: más estilo profesional */
+}
+textarea {
+  resize: none;
 }
