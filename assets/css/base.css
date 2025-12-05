@@ -568,21 +568,26 @@ html, body {
   color: #c0392b;
   margin-top: 0.25rem;
 }
-.social-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform .3s ease, opacity .3s ease;
-  display: inline-block;
+/* Bloque de redes sociales en el header */
+.social-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.social-icon:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
+.social-header img {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  opacity: 0.85;
+  transition: opacity .2s ease, transform .2s ease;
 }
-.header-social {
-  text-align: center;
-  margin-top: 10px;
+
+.social-header img:hover {
+  opacity: 1;
+  transform: scale(1.08);
 }
+
 .form-legal-note {
   font-size: 12px;
   line-height: 1.3;
