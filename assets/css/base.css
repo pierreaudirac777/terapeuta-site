@@ -655,7 +655,7 @@ textarea {
 }
 
 .logo img {
-  height: 44px;        /* tamaño del logo en la barra negra */
+  height: 70px;        /* tamaño del logo en la barra negra */
   width: auto;
-  border-radius: 10px; /* opcional, queda bonito con esquinas suaves */
+  border-radius: 12px; /* opcional, queda bonito con esquinas suaves */
 }
