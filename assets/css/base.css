@@ -672,7 +672,7 @@ textarea {
 
   /* El logo un poco más pequeño en móvil */
   .logo img {
-    height: 48px;
+    height: 60px;
   }
 
   /* El menú deja de ser absolute y se centra normal */
