@@ -1219,3 +1219,28 @@ flex-direction: column !important;
 align-items: center !important;
 }
 }
+/* AJUSTE PARA QUE EL MENÚ QUEPA EN EL MÓVIL */
+
+@media (max-width: 768px) {
+.nav {
+display: flex !important;
+flex-wrap: wrap !important; /* Esto permite que los botones bajen si no caben */
+justify-content: center !important;
+gap: 5px !important;
+}
+
+.nav a {
+font-size: 0.7rem !important; /* Letra un poco más pequeña en móvil /
+letter-spacing: 0.5px !important; / Reducimos el espacio entre letras */
+margin: 5px 2px !important;
+padding: 5px !important;
+}
+
+.site-header {
+padding: 5px 0 !important; /* Menú más delgado para no robar pantalla */
+}
+
+.logo img {
+max-height: 30px !important; /* Logo más pequeño en móvil */
+}
+}
