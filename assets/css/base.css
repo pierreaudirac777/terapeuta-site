@@ -1,36 +1,23 @@
 /* ====== Variables (paleta turquesa-azul) ====== */
 :root {
- --font: "Inter", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --font: "Inter", system-ui, -apple-system, sans-serif;
 
+  /* Fondos que inspiran paz (Verde Salvia muy suave / Hueso) */
+  --bg: #f7f9f8;        /* Un blanco con un toque de verde musgo muy sutil */
+  --header-bg: #ffffff; /* Blanco puro para que el logo destaque */
+  
+  /* Texto (Azul petróleo oscuro para que sea legible pero suave) */
+  --text: #2d3e40;      
+  --ink: #4a5d5f;
+  --muted: #8ca0a2;
 
-
-  /* Texto y fondos */
-  --text: #f1f4f7;
-  --bg: #060808;
-
-  /* Marca y mi nombre */
-  --primary: #1a7da6;
-  /* turquesa */
-  --primary-dark: #44aa69;
-  /* azul petróleo */
-
-  /* Tonos turquesa (sesiones) */
-  --s1: #44848f;
-  --s2: #0b7575;
-  --s3: #246068;
-  --s4: #c2e6eb;
-
-  /* Botones */
-  --primary-ink: #ccdae2;
-  --ghost: #0ea5a6;
-
-  /* Header/Footer */
-  --header-bg: #000505;
-  --shadow: 0 6px 22px rgba(2, 6, 23, .06), 0 1px 2px rgba(2, 6, 23, .04);
-
-  /* Texto auxiliar */
-  --ink: #dfe0e4;
-  --muted: #64748b;
+  /* Tus colores de marca (Turquesa y Verde) */
+  --primary: #1a7da6;   /* El azul de Pierre Audirac [cite: 3] */
+  --ghost: #0ea5a6;     /* Turquesa para botones y detalles */
+  
+  /* Tarjetas (Ahora serán blancas o con un gris muy leve) */
+  --card-bg: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* ====== Reset básico ====== */
@@ -56,7 +43,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Para que el menú no tape los títulos */
+}
 /* ====== Tipografía/base ====== */
 body {
   font-family: var(--font);
@@ -134,13 +124,20 @@ body {
 /* ====== Hero con imagen + overlay (coincide con tu index.html) ====== */
 .hero {
   position: relative;
+  overflow: hidden; /* Importante para que la imagen no se salga */
+  height: 80vh; /* Un poco más alta para que luzca mejor */
 }
 
 .hero picture img {
   width: 100%;
-  height: 56vh;
+  height: 100%;
   object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
+  animation: kenburns 20s infinite alternate; /* Movimiento suave */
+}
+
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
 }
 
 .hero-overlay {
@@ -150,265 +147,231 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.2); /* Oscurece solo un poco la imagen */
+}
+
+/* El recuadro de cristal para el texto */
+.hero-text-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px); /* El efecto de desenfoque */
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  padding: 24px;
-  color: #fff;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .35), rgba(0, 0, 0, .25) 40%, rgba(0, 0, 0, .15));
+  max-width: 800px;
+  animation: fadeInUp 1.2s ease-out; /* Animación de entrada */
 }
 
-.cta-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-/* ====== Secciones ====== */
-
-/* ===== Sesiones: esquema de color por tarjeta (fondo + borde + textos + botón) ===== */
-
-/* Base coherente en tema oscuro */
-/* ===== Sesiones (grid de cards) ===== */
+/* ====== SESIONES (Estilo Moderno Unificado) ====== */
 .sesiones .cards {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  align-items: stretch;
+  display: flex; /* Cambiamos de grid a flex para centrar mejor una sola pieza */
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 800px; /* Limitamos el ancho para que la tarjeta no sea gigante */
+  margin: 0 auto;
 }
 
 .sesiones .card.servicio {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 1.25rem;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.03); /* Fondo oscuro semitransparente muy elegante */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Cabecera y subtítulo de cada card */
-.sesiones .servicio-header {
-  text-align: center;
-  margin: 0 0 .25rem 0;
-  line-height: 1.2;
+.sesiones .card.servicio:hover {
+  transform: translateY(-12px);
+  border-color: var(--ghost); /* El turquesa brilla al pasar el ratón */
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.sesiones .servicio-header h3 {
+  color: var(--ghost); /* Tu color turquesa corporativo */
+  font-size: 1.85rem;
+  margin-bottom: 8px;
 }
 
 .sesiones .servicio-sub {
-  opacity: .85;
-  margin: 0 0 .75rem 0;
-  font-size: .95rem;
-  text-align: center; /* centramos subtítulos */
+  color: var(--primary-ink);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
 }
 
-
-
-/* Listas dentro de las cards */
-.sesiones .servicio-lista {
-  margin: .5rem 0 1rem 1.1rem;
-  padding: 0;
-  list-style: disc;
+/* Adiós al texto justificado: la alineación a la izquierda mejora la lectura */
+.sesiones .card p, 
+.sesiones .card li {
+  text-align: left; 
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
-/* CTAs dentro de las cards */
 .sesiones .servicio-cta {
-  display: grid;           /* apila los botones */
-  gap: .5rem;
-  justify-items: center;   /* centra ambos horizontalmente */
-  margin-top: auto;        /* empuja las CTAs al final del card */
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.sesiones .servicio-cta .btn-primary {
-  order: 1;                /* Reservar primero */
+/* ====== Limpieza y modernización de tarjetas de servicios ====== */
+
+.sesiones .servicio-header h3 {
+  color: var(--ghost); /* Usa el turquesa profesional que ya definiste */
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
-.sesiones .servicio-cta .btn-ghost {
-  order: 2;                /* WhatsApp debajo */
+.sesiones .servicio-sub {
+  color: var(--primary-ink);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 
-.sesiones .servicio-detalle {
-  margin-top: .25rem;
-  opacity: .95;
+/* ====== 1. DISEÑO SPLIT (Sobre Mí) ====== */
+#sobre-mi {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 24px;
+  flex-wrap: wrap;
 }
 
-/* Justificar texto, pero NO los subtítulos */
-.sesiones .card p:not(.servicio-sub),
-.sesiones .card li,
-.sesiones .card .more {
-  text-align: justify;
-}
-
-
-/* Botón "Leer más" dentro de las cards de sesiones */
-.sesiones .card .more-toggle {
-  box-shadow: 0 6px 18px rgba(0,0,0,.22);
-  transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
-}
-
-.sesiones .card .more-toggle:hover,
-.sesiones .card .more-toggle:focus {
-  transform: translateY(-1px);
-  filter: brightness(1.06);
-  box-shadow: 0 10px 24px rgba(0,0,0,.28);
-  outline: none;
-}
-
-.sesiones .card .more-toggle:focus-visible {
-  outline: 2px solid rgba(255,255,255,.35);
-  outline-offset: 2px;
-}
-
-/* Título de la sección Sesiones */
-.sesiones h2 {
-  text-align: center;
-  max-width: 30ch;
-  margin-inline: auto;
-  margin-block: 0 1rem;
-}
-
-/* Colores personalizados por card de Sesiones */
-.sesiones .cards .servicio:nth-child(1) .servicio-header h3 { color: #0e0d0d; } /* Individual */
-.sesiones .cards .servicio:nth-child(1) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(2) .servicio-header h3 { color: #0e0d0d; } /* Pareja */
-.sesiones .cards .servicio:nth-child(2) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(3) .servicio-header h3 { color: #0e0d0d; } /* LGTBIQ+ */
-.sesiones .cards .servicio:nth-child(3) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(4) .servicio-header h3 { color: #0e0d0d; } /* Duelo migratorio */
-.sesiones .cards .servicio:nth-child(4) .servicio-sub     { color: #0e0d0d; }
-
-.sesiones .cards .servicio:nth-child(1) :is(p, li),
-.sesiones .cards .servicio:nth-child(2) :is(p, li),
-.sesiones .cards .servicio:nth-child(3) :is(p, li),
-.sesiones .cards .servicio:nth-child(4) :is(p, li) {
-  color: #021414;
-}
-
-/* ===== Grids genéricos ===== */
-.grid-2 {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 900px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== Avatar redondo ===== */
-.avatar {
-  --size: clamp(240px, 32vw, 380px); /* Tamaño fluido */
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
+/* Imagen moderna (ya no es redonda, ahora es un cuadrado suave) */
+.avatar-modern {
+  flex: 1;
+  min-width: 320px;
+  max-width: 450px;
+  border-radius: 24px; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   object-fit: cover;
-  box-shadow: var(--shadow);
-  border: 4px solid #fff;
-  outline: 3px solid rgba(11,58,91,.12);
 }
 
-/* Centrar avatar cuando va solo */
-.avatar-center,
-#sobre-mi .avatar {
-  display: block;
-  margin-inline: auto;
+.split-content {
+  flex: 1;
+  min-width: 320px;
 }
 
-/* ===== Cards genéricas ===== */
-.cards {
+/* ====== 2. RECUADROS DE SERVICIOS (Individual y Grupal) ====== */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+.card-modern {
+  background: #0d1212; /* Fondo oscuro profesional */
+  border: 1px solid rgba(26, 125, 166, 0.2); 
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  padding: 40px;
+}
+
+.card-modern:hover {
+  transform: translateY(-8px);
+  border-color: var(--ghost);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-modern h3 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* Estilo para los iconos de experiencia */
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
-  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.card {
-  background: #55c4f8;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
-  width: 320px;
-  max-width: 100%;
-  padding: 20px;
-  transition: transform .3s ease, box-shadow .3s ease;
+.tag {
+  background: rgba(14, 165, 166, 0.1);
+  border: 1px solid rgba(14, 165, 166, 0.3);
+  color: var(--ghost);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
-}
+/* ====== 3. BOTONES Y FOOTER (Actualizados) ====== */
+/* ====== UNIFICACIÓN ESTÉTICA ====== */
 
-.card h3 {
-  margin-top: 0;
-  color: var(--primary-dark);
-}
-
-/* Variación “sesiones” con borde turquesa */
-.sesiones .card {
-  border: 2px solid var(--s2);
-  box-shadow: 0 4px 10px rgba(0, 120, 140, .12);
-}
-
-.sesiones .card h3 {
-  color: #ebf2f3;
-}
-
-/* ===== Componente "Leer más" ===== */
-.more {
-  display: none;
-  margin-top: 14px;
-  background: var(--s1);
-  border-radius: 12px;
-  padding: 12px;
-  color: #e0e8e9;
-}
-
-.more.is-open {
-  display: block;
-}
-
-/* Botón "Leer más" genérico */
-.link.more-toggle {
-  margin-top: 12px;
-  background-color: var(--s3);
-  color: #0f0f0f;
-  border: none;
-  border-radius: 22px;
-  padding: 9px 18px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color .25s ease, transform .15s ease;
-}
-
-.link.more-toggle:hover {
-  background-color: var(--s4);
-  transform: scale(1.05);
-}
-
-/* ===== Botones ===== */
-.btn {
-  display: inline-block;
-  font-weight: 700;
-  border-radius: 12px;
-  padding: 12px 16px;
-  box-shadow: var(--shadow);
-}
-
+/* Botones idénticos */
 .btn-primary {
-  background: var(--primary);
-  color: var(--primary-ink);
+  background-color: var(--primary); /* El color azul/turquesa de tu logo */
+  color: #ffffff !important;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  padding: 14px 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%; /* Para que ocupen el mismo ancho en la tarjeta */
+  text-align: center;
 }
 
-.btn-ghost {
-  background: var(--ghost);
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--primary) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(26, 125, 166, 0.2);
+}
+
+/* Estilo de la lista de incisos (Incisos) */
+.bullets-modern {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.bullets-modern li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: var(--text);
-  border: 1px solid rgba(2, 6, 23, .08);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
+.bullets-modern li span {
+  font-size: 1.2rem;
+  filter: saturate(0.8); /* Suaviza un poco el color de los emojis para que sea profesional */
+}
+
+/* Ajuste de la caja de experiencia */
+.expertise-box h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--ghost);
+  letter-spacing: 1px;
+  margin: 25px 0 10px;
+}
 /* ===== Footer ===== */
 .site-footer {
   background: #0ea5a6;
-  color: #fff;
+  color: #090909;
   padding: 30px 20px;
   text-align: center;
   font-size: 15px;
@@ -427,7 +390,7 @@ body {
 }
 
 .site-footer a {
-  color: #ffffff;
+  color: #0f0e0e;
   text-decoration: underline;
   font-size: inherit;   /* misma letra que el texto */
   display: inline-block;
@@ -515,10 +478,27 @@ body {
 }
 
 /* Sobre mí: layout */
+/* Sobre mí: layout modernizado */
 #sobre-mi {
-  grid-template-columns: clamp(200px, 28vw, 300px) 1fr;
+  display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 60px;
+  padding: 100px 24px;
+  flex-wrap: wrap;
+}
+
+#sobre-mi > div {
+  flex: 1;
+  min-width: 320px;
+}
+
+/* Imagen cuadrada con bordes suaves en lugar de redonda */
+.avatar-modern {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 24px; 
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  object-fit: cover;
 }
 
 @media (max-width: 900px) {
@@ -751,4 +731,491 @@ textarea {
   .contact-form .form-field:nth-child(5) {
     grid-column: 1 / -1;
   }
+}
+/* 1. Desplazamiento suave */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Evita que el menú tape el título al bajar */
+}
+
+/* 2. Diseño dividido (Split) */
+.split-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 20px;
+  flex-wrap: wrap; /* Para que en el móvil se ponga uno sobre otro */
+}
+
+.split-image, .split-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.avatar-modern {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px; /* Bordes redondeados modernos */
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.05); /* Sombra suave */
+}
+
+.subtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #a3c1ad;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}
+/* ====== SECCIÓN FAQ ====== */
+
+.faq-container {
+  max-width: 800px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(14, 165, 166, 0.2);
+  padding: 25px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--ghost);
+  background: rgba(14, 165, 166, 0.05);
+}
+
+.faq-item h3 {
+  color: var(--ghost);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.faq-item p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Ajuste de títulos para que no se peguen al borde */
+.center {
+  text-align: center;
+  margin-bottom: 30px;
+}
+/* Asegura que el salto a las secciones sea suave */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Ajusta esto según el alto de tu barra negra */
+}
+
+/* Estilo para el botón de WhatsApp en el menú */
+.nav-cta {
+  background: var(--ghost);
+  color: #000 !important;
+  padding: 5px 15px !important;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+
+.nav-cta:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+/* ====== EFECTO BORDE BRILLANTE (Servicio Destacado) ====== */
+
+.card-featured {
+  border: 2px solid var(--ghost) !important; /* Resalta el borde con tu color turquesa */
+  position: relative;
+  z-index: 1;
+}
+
+/* El resplandor animado detrás de la tarjeta */
+.card-featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 24px;
+  padding: 2px; /* Grosor del brillo */
+  background: linear-gradient(45deg, var(--ghost), transparent, var(--ghost));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: rotate-gradient 6s linear infinite;
+  opacity: 0.6;
+}
+
+/* Animación de pulsación sutil */
+@keyframes rotate-gradient {
+  0% { filter: hue-rotate(0deg) brightness(1); opacity: 0.4; }
+  50% { filter: hue-rotate(10deg) brightness(1.3); opacity: 0.8; }
+  100% { filter: hue-rotate(0deg) brightness(1); opacity: 0.4; }
+}
+/* ====== AJUSTES FINALES PARA EL MODO CLARO ====== */
+
+/* 1. Fondo general */
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* 2. Header y Navegación */
+.site-header {
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav a {
+  color: var(--text) !important;
+}
+
+/* 3. Tarjetas de Servicios */
+.card-modern {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.card-modern h3 {
+  color: var(--primary) !important;
+}
+
+.card-modern p, .card-modern li {
+  color: var(--ink) !important;
+}
+
+/* 4. Ajuste del FAQ */
+.faq-item {
+  background: #ffffff !important;
+  border: 1px solid #e1e8e7 !important;
+}
+
+.faq-item h3 {
+  color: var(--ghost) !important;
+}
+
+.faq-item p {
+  color: var(--ink) !important;
+}
+
+/* 5. Footer claro */
+.site-footer {
+  background: #e9eeed !important;
+  color: var(--ink) !important;
+}
+/* ====== MEJORA DE TEXTO Y ANIMACIONES ====== */
+
+.hero-text-box h1 {
+  color: #ffffff; /* Blanco puro para máxima claridad */
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para que "salte" del fondo */
+  margin-bottom: 20px;
+  opacity: 0; /* Empezamos invisible para la animación */
+}
+
+.hero-text-box p {
+  color: var(--ghost); /* Usamos tu turquesa profesional para la frase */
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+
+/* Animaciones */
+.animate-title {
+  animation: fadeInDown 1.2s forwards;
+  animation-delay: 0.3s;
+}
+
+.animate-phrase {
+  animation: fadeInUp 1.2s forwards;
+  animation-delay: 0.8s; /* Aparece un poco después que el título */
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ====== EFECTO PREMIUM PARA EL LOGO ====== */
+
+.logo img {
+  transition: all 0.4s ease-in-out;
+  /* Mantenemos un borde suave por defecto */
+  border-radius: 12px; 
+}
+
+.logo img:hover {
+  /* Crea un resplandor con tu color turquesa profesional */
+  filter: drop-shadow(0 0 12px rgba(14, 165, 166, 0.7));
+  /* Un crecimiento casi imperceptible pero elegante */
+  transform: scale(1.03); 
+  filter: brightness(1.1);
+}
+/* Efecto específico para el icono de TikTok */
+.social-icons a[href*="tiktok.png"]:hover img,
+.social-icons a[href*="tiktok"]:hover img {
+  filter: drop-shadow(0 0 8px #ff0050) drop-shadow(0 0 8px #00f2ea);
+  transform: scale(1.1);
+}
+/* ====== RECUPERAR EL BRILLO TURQUESA (Hover) ====== */
+
+.card-modern:hover {
+border-color: var(--ghost) !important;
+box-shadow: 0 20px 40px rgba(14, 165, 166, 0.2) !important;
+transform: translateY(-8px);
+}
+
+.faq-item:hover {
+border-color: var(--ghost) !important;
+box-shadow: 0 10px 25px rgba(14, 165, 166, 0.15) !important;
+cursor: pointer;
+}
+
+.card-modern:hover h3,
+.faq-item:hover h3 {
+color: var(--ghost) !important;
+}
+
+.card-modern, .faq-item {
+transition: all 0.4s ease !important;
+}
+/* NAVEGACION MODERNA Y FIJA */
+
+.site-header {
+position: sticky !important;
+top: 0;
+z-index: 9999;
+background-color: var(--header-bg) !important;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+padding: 10px 0;
+}
+
+.nav a {
+position: relative;
+text-decoration: none;
+color: var(--text) !important;
+padding: 8px 12px;
+transition: color 0.3s ease;
+display: inline-block;
+}
+
+/* Color turquesa al pasar el raton */
+.nav a:hover {
+color: var(--ghost) !important;
+transform: translateY(-2px);
+}
+
+/* La linea turquesa debajo */
+.nav a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: var(--ghost);
+transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+width: 100%;
+}
+/* CABECERA FIJA CON EFECTO CRISTAL (Glassmorphism) */
+
+.site-header {
+position: sticky !important;
+top: 0;
+z-index: 9999;
+/* Fondo blanco con transparencia del 80% /
+background-color: rgba(255, 255, 255, 0.8) !important;
+/ El truco del cristal: desenfoque del fondo */
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+transition: all 0.4s ease;
+padding: 15px 0;
+}
+
+/* Ajuste para los enlaces del menú dentro de la barra fija */
+.nav a {
+color: var(--text) !important;
+font-weight: 500;
+margin: 0 15px;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.nav a:hover {
+color: var(--ghost) !important;
+}
+.site-header {
+position: fixed !important;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 9999;
+background-color: rgba(255, 255, 255, 0.85) !important;
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+padding: 10px 0;
+}
+
+body {
+padding-top: 80px !important;
+}
+/* ESTILO ELEGANTE PARA EL MENÚ */
+
+.nav a {
+font-family: 'Inter', sans-serif;
+font-size: 0.85rem !important;
+font-weight: 500;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(--text) !important;
+margin: 0 15px;
+transition: all 0.3s ease !important;
+text-decoration: none;
+display: inline-block;
+}
+
+/* Ajuste del logo para que no se vea tosco */
+.logo img {
+max-height: 40px;
+width: auto;
+transition: all 0.3s ease;
+}
+
+/* Color turquesa al pasar el ratón */
+.nav a:hover {
+color: var(--ghost) !important;
+transform: translateY(-2px);
+}
+/* 1. COLOR OSCURO PARA EL MENÚ DEL BLOG */
+
+.nav a {
+color: #2c3e40 !important;
+}
+
+/* 2. ESTILO Y EFECTO TURQUESA PARA ARTÍCULOS */
+
+article, .blog-card, .post-entry, .article-card {
+transition: all 0.4s ease !important;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 20px;
+background-color: #ffffff;
+padding: 20px;
+margin-bottom: 25px;
+display: block;
+text-decoration: none;
+}
+
+/* Efecto al pasar el ratón (Hover) */
+
+article:hover, .blog-card:hover, .post-entry:hover, .article-card:hover {
+border-color: #0ea5a6 !important;
+box-shadow: 0 20px 40px rgba(14, 165, 166, 0.2) !important;
+transform: translateY(-8px);
+}
+
+/* Títulos en turquesa al pasar el ratón */
+
+article:hover h1, article:hover h2, .blog-card:hover h3, .post-entry:hover h2 {
+color: #0ea5a6 !important;
+transition: color 0.3s ease;
+}
+h2 {
+margin-bottom: 0px !important;
+}
+
+p {
+margin-top: 0px !important;
+margin-bottom: 10px !important;
+}
+
+section, .contact-section, .form-container {
+padding-top: 0px !important;
+margin-top: 0px !important;
+}
+
+#contacto, .contact {
+padding-top: 10px !important;
+}
+/* UNIFICAR FOTO Y TEXTO - VERSIÓN COMPATIBLE */
+
+section[class*="about"],
+section[class*="conoceme"],
+.about-container {
+display: flex !important;
+flex-direction: row !important;
+align-items: flex-start !important;
+justify-content: center !important;
+gap: 20px !important;
+max-width: 1100px !important;
+margin: 40px auto !important;
+padding: 0 20px !important;
+}
+
+/* Ajuste del bloque de la foto /
+div[class="image"],
+.about-image {
+flex: 0 0 350px !important;
+margin: 0 !important;
+}
+
+/* Ajuste del bloque del texto /
+div[class="text"],
+.about-text {
+flex: 1 !important;
+margin: 0 !important;
+text-align: left !important;
+}
+
+/* Alinear el título CONÓCEME arriba del todo */
+h2, .about-text h2 {
+margin-top: 0 !important;
+padding-top: 0 !important;
+line-height: 1 !important;
+}
+
+/* Arreglo para móviles /
+@media (max-width: 768px) {
+section[class="about"], .about-container {
+flex-direction: column !important;
+align-items: center !important;
+}
 }
